@@ -38,15 +38,19 @@ class BITS_Status extends WP_Widget {
    */
   public function widget( $args, $instance ) {
     // outputs the content of the widget
-    
 
+ 
+
+    extract($args) ;
     extract($instance) ;
+
+    // print_r($args) ;
 
     
     echo $before_widget ;
 
     echo $before_title ;
-    echo "<h1>Stato della sede:</h1>" ;
+    echo $options["title"] = "Stato della sede del PoUL:" ;
     echo $after_title ;
     
 
