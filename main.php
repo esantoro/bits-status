@@ -39,23 +39,32 @@ class BITS_Status extends WP_Widget {
   public function widget( $args, $instance ) {
     // outputs the content of the widget
     
-    // public function getStatusSede($datasource) {
-    
-    echo "<h1>Stato della sede:</h1>" ;
 
+    extract($instance) ;
+
+    
+    echo $before_widget ;
+
+    echo $before_title ;
+    echo "<h1>Stato della sede:</h1>" ;
+    echo $after_title ;
+    
 
     try {
-      $status = $this->getStatusSede( $instance["dataSource"]) ;
+      $status = $this->getStatusSede( $dataSource) ;
     }
     catch (Exception $e) {
       $status = "N/A" ;
     }
+
+
     ?>
-    
     <p style="color: <?php echo $status == 'open' ? 'green' : 'red';   ?> ;">
-        <?php echo $status ?>   
+       <?php echo $status ;?>   
     </p>
     <?php
+
+    echo $after_widget ;
   }
   
   /**
