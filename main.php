@@ -44,8 +44,12 @@ class BITS_Status extends WP_Widget {
     echo "<h1>Stato della sede:</h1>" ;
 
 
-    $status = $this->getStatusSede( $instance["dataSource"]) ;
-
+    try {
+      $status = $this->getStatusSede( $instance["dataSource"]) ;
+    }
+    catch (Exception $e) {
+      $status = "N/A" ;
+    }
     ?>
     
     <p style="color: <?php echo $status == 'open' ? 'green' : 'red';   ?> ;">
