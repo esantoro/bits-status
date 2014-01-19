@@ -64,7 +64,17 @@ class BITS_Status extends WP_Widget {
 
     ?>
     <p style="color: <?php echo $status == 'open' ? 'green' : 'red';   ?> ; font-weight:bold; text-align: center;">
-       <?php echo $status ;?>   
+       <?php echo $status["status"] ;?>   
+    </p>
+
+       <h1 class="widget-title">Messaggio:</h2>
+    <p>
+       <span class="messaggio">
+         <?php echo esc_attr($status["message"]) ;?>
+       </span>
+       <p>Lasciato da: <span style="font-weight: bold;">
+          <?php echo esc_attr($status["message_author"]) ; ?>
+       </span></p>
     </p>
     <?php
 
@@ -131,7 +141,9 @@ class BITS_Status extends WP_Widget {
     $data = json_decode($json_data) ;
 
     // echo $data->status->value ;
-    return $data->status->value ;
+    return array("status" =>  $data->status->value,
+		 "message" =>  $data->message->value,
+		 "message_author" => $data->message->user) ;
   }
   
 }
