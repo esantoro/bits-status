@@ -63,7 +63,8 @@ class BITS_Status extends WP_Widget {
 
 
     ?>
-    <p style="color: <?php echo $status == 'open' ? 'green' : 'red';   ?> ; font-weight:bold; text-align: center;">
+    <p style="color: <?php echo 'open' === $status["status"]  ? 'green' : 'red';   ?> ; font-weight:bold; text-align: center;">
+
        <?php echo $status["status"] ;?>   
     </p>
 
